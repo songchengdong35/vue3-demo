@@ -5,6 +5,5 @@ import TheWelcome from '../components/TheWelcome.vue'
 <template>
   <main>
     <TheWelcome />
-    <div>sssss</div>
   </main>
 </template>
