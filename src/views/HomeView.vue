@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>是否成年：{{ isAdult }}</h3>
+    <h3 :class="{ redTitle: isRed }">是否成年：{{ isAdult }}</h3>
     <h3>旧值： {{ oldVal }}</h3>
     <button @click="increment">count {{ count }}</button>
   </div>
@@ -10,6 +10,7 @@
 import { ref, reactive, computed } from 'vue'
 
 let count = ref(1)
+let isRed = ref(false)
 const stu = reactive({
   name: 'zx',
   age: 1,
@@ -18,6 +19,7 @@ const stu = reactive({
 function increment() {
   count.value++
   stu.age += count.value
+  isRed.value = !isRed.value
 }
 const { name } = stu
 console.log('name', name)
@@ -30,6 +32,8 @@ const isAdult = computed(() => {
 
 </script>
 
-<style lang="less" scoped>
-
+<style lang="scss" scoped>
+.redTitle {
+  color: red
+}
 </style>
