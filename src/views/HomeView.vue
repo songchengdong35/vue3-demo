@@ -1,16 +1,18 @@
 <template>
-  <main>
+  <div>
+    <h3>是否成年：{{ isAdult }}</h3>
+    <h3>旧值： {{ oldVal }}</h3>
     <button @click="increment">count {{ count }}</button>
-  </main>
+  </div>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 
-let count = ref(0)
+let count = ref(1)
 const stu = reactive({
   name: 'zx',
-  age: 38,
+  age: 1,
   sex: '男'
 })
 function increment() {
@@ -19,6 +21,13 @@ function increment() {
 }
 const { name } = stu
 console.log('name', name)
+
+// computed
+const isAdult = computed(() => {
+  return stu.age > 18 ? '是':'否'
+})
+
+
 </script>
 
 <style lang="less" scoped>
